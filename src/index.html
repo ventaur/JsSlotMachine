@@ -8,14 +8,19 @@
             background-color: #eee;
         }
 
+        #results {
+            -webkit-column-count: 4;
+            -moz-column-count: 4;
+            column-count: 4;
+        }
+
         .is-payout {
-            color: orangered;
             font-weight: bold;
         }
     </style>
 </head>
 <body>
-    <div id="test"></div>
+    <div id="results"></div>
 
     <script src="jspm_packages/system.js"></script>
     <script src="config.js"></script>
