@@ -1,0 +1,9 @@
+{
+    "compilerOptions": {
+        "module": "es6"
+    },
+    "exclude": [
+        "typings/main.d.ts",
+        "typings/main"
+    ]
+}

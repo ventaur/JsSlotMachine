@@ -1,0 +1,40 @@
+{
+  "name": "js-slot-machine",
+  "version": "0.1.0",
+  "description": "This is a slot machine game, written in JavaScript.",
+  "main": "index.js",
+  "scripts": {
+    "tdd": "karma start",
+    "serve": "browser-sync start --server \"src\" --files \"src\""
+  },
+  "keywords": [
+    "game",
+    "slots",
+    "slot machine",
+    "chance",
+    "random",
+    "gambling"
+  ],
+  "author": "Matt Sollars",
+  "license": "MIT",
+  "devDependencies": {
+    "eslint": "^2.12.0",
+    "jasmine": "^2.4.1",
+    "jasmine-core": "^2.4.1",
+    "jspm": "^0.16.39",
+    "karma": "^0.13.22",
+    "karma-chrome-launcher": "^1.0.1",
+    "karma-jasmine": "^1.0.2",
+    "karma-jspm": "^2.1.1"
+  },
+  "jspm": {
+    "directories": {
+      "baseURL": "src"
+    },
+    "devDependencies": {
+      "babel": "npm:babel-core@^5.8.24",
+      "babel-runtime": "npm:babel-runtime@^5.8.24",
+      "core-js": "npm:core-js@^1.1.4"
+    }
+  }
+}
