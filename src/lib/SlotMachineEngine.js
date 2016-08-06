@@ -1,6 +1,6 @@
 import SlotSymbol from './SlotSymbol';
 import SlotMachineResults from './SlotMachineResults';
-import { allElementsAreSame } from './common';
+import { allElementsAreSame, getRandomInteger } from './common';
 
 const DefaultSymbols = [
     new SlotSymbol('cherry', 0.5),
@@ -64,12 +64,8 @@ export default class SlotMachineEngine {
     }
 
     static getRandomElement(list) {
-        const randomIndex = this.getRandomInteger(0, list.length);
+        const randomIndex = getRandomInteger(0, list.length);
         return list[randomIndex];
-    }
-
-    static getRandomInteger(min, maxExclusive) {
-        return Math.floor(Math.random() * (maxExclusive - min)) + min;
     }
 
     static shouldPayout(symbol) {

@@ -10,3 +10,12 @@ export function allElementsAreSame(list) {
 
     return true;
 }
+
+export function getRandomInteger(min, maxExclusive) {
+    return Math.floor(Math.random() * (maxExclusive - min)) + min;
+}
+
+export function scaleToRange(value, sourceMin, sourceMax, targetMin, targetMax) {
+    const ratio = (value - sourceMin) / (sourceMax - sourceMin);
+    return ratio * (targetMax - targetMin) + targetMin;
+}
