@@ -3,23 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <title>Slot Machine</title>
-    <style>
-        html {
-            background-color: #eee;
-        }
-
-        #results {
-            -webkit-column-count: 4;
-            -moz-column-count: 4;
-            column-count: 4;
-        }
-
-        .is-payout {
-            font-weight: bold;
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <div id="forms">
+        <form id="iterationsForm">
+            <label for="iterations">Iterations:</label>
+            <input id="iterations" type="number" value="100">
+            <input type="submit" value="Generate">
+        </form>
+
+        <form id="payoutForm">
+            <label for="payoutSymbol">Payout for:</label>
+            <select id="payoutSymbol">
+                <option value="">- Select one -</option>
+            </select>;
+            <label for"payoutAttempts">with attempts:</label>
+            <input id="payoutAttempts" type="number" value="10">
+            <input type="submit" value="Attempt">
+        </form>
+    </div>
+
+    <h2 id="resultsHeading"></h2>
     <div id="results"></div>
 
     <script src="jspm_packages/system.js"></script>
