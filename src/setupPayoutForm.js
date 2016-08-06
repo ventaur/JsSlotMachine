@@ -23,6 +23,7 @@ export default function setupPayoutForm() {
 
         const totalAttempts = getTotalAttempts();
         const symbol = getSelectedSymbol();
+        const showIterations = getShowIterations();
         if (totalAttempts === undefined || symbol === undefined) return;
 
         const resultsElement = document.getElementById('results');
@@ -37,26 +38,31 @@ export default function setupPayoutForm() {
         for (let attemptCount = 0; attemptCount < totalAttempts; attemptCount++) {
             Rx.Observable.start(function () {
                 const messageElement = document.createElement('div');
-                messageElement.innerText = '0 iterations';
+                messageElement.innerHTML = '? iterations';
+                messageElement.className = 'busy';
                 resultsElement.appendChild(messageElement);
 
+                let totalIterations = 0;
                 Rx.Observable.from(
                     repeatUntilSuccess(
                         () => {
                             const results = engine.generate();
                             return (results.isPayout && results.slotSymbols[0] === symbol);
                         }), null, null, defaultScheduler)
-                    .take(maxIterations)
                     .subscribe(
                         function (iterations) {
-                            defaultScheduler.schedule(null, function () {
-                                messageElement.innerText = `${iterations.toLocaleString()} iterations`;
-                            });
+                            totalIterations = iterations;
+                            if (showIterations) {
+                                defaultScheduler.schedule(null, function () {
+                                    updateMessage(messageElement, totalIterations);
+                                });
+                            }
                         },
                         function () {
                             messageElement.className = 'failure';
                         },
                         function () {
+                            updateMessage(messageElement, totalIterations);
                             messageElement.className = 'success';
                         }
                     );
@@ -77,6 +83,11 @@ export default function setupPayoutForm() {
         return availableSymbols.find(s => s.key === key);
     }
 
+    function getShowIterations() {
+        const showIterationsInput = document.getElementById('payoutShowIterations');
+        return showIterationsInput.checked;
+    }
+
     function* repeatUntilSuccess(action) {
         // Something is odd about how Babel translates loops in a generator, 
         // so we *have* to use < instead of <=.
@@ -90,5 +101,10 @@ export default function setupPayoutForm() {
         }
 
         throw new Error('"maxIterations" reached.');
+    }
+
+    function updateMessage(messageElement, totalIterations) {
+        messageElement.innerHTML = '';
+        messageElement.innerText = `${totalIterations.toLocaleString()} iterations`;
     }
 }

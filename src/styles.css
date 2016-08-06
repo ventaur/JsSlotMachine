@@ -33,6 +33,12 @@ input[type=number] {
     
     text-align: right;
 }
+#results.iterations div {
+    padding-right: 20px;
+}
+#results.iterations .busy {
+    background: url(/busy.gif) no-repeat no-repeat right top;
+}
 
 .is-payout {
     font-weight: bold;
