@@ -1,6 +1,6 @@
 JS Slot Machine
 =========================
-This is a slot machine game, written in JavaScript. 
+A slot machine game, written in JavaScript. 
 
 ### JS Config for VS Code
 VS Code looks for a `jsconfig.json` file in order find explicit configuration for the JS project. Ours is located in the `/src` directory in order to scope the project there. We also configure exclusions for the `main*` Typings in favor of the `browser*` ones.
