@@ -16,7 +16,7 @@ export default function setupIterationsForm() {
         
         const engine = new SlotMachineEngine();
 
-        for (var count = 0; count < totalIterations; count++) {
+        for (let count = 0; count < totalIterations; count++) {
             const results = engine.generate();
             const lineElement = document.createElement('div');
 
